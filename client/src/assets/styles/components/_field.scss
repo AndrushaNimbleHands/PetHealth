@@ -1,0 +1,25 @@
+.field__title{
+  margin: 20px 0 5px 0;
+  font-family: "Inter", "Arial", system-ui;
+  font-size: 140%;
+}
+
+.field__entering-area{
+  resize: none;
+  width: 40vh;
+  font-family: "Inter", "Arial", system-ui;
+  height: 3vh;
+  font-size: 110%;
+  align-content: center;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+}
+
+.field__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: max-content;
+}

@@ -1,0 +1,50 @@
+$primary-bg-yellow: #FFFCE9;
+$primary-hover-yellow: #F5E670;
+
+.left-menu__button,
+.sign-in__button,
+.sign-up__button {
+  background-color: $primary-bg-yellow;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin: 2vh;
+}
+
+.sign-in__button,
+.sign-up__button,
+.sign-in__send-code-button,
+.sign-up__send-code-button{
+  background-color: $primary-bg-yellow;
+  box-shadow:
+          inset 2px 2px 5px rgba(0,0,0,0.2),
+          2px 2px 5px rgba(0,0,0,0.2);
+  margin: 50px 0;
+}
+
+.sign-in__button:hover,
+.sign-up__button:hover,
+.left-menu__button:hover,
+.sign-in__send-code-button:hover,
+.sign-up__send-code-button:hover {
+  background-color: $primary-hover-yellow;
+}
+
+.button {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  min-width: 100px;
+  width: 20%;
+  font-size: 150%;
+  text-align: center;
+}
+
+.sign-in__send-code-button, .sign-up__send-code-button {
+  margin: 20px 0;
+  width: 120px;
+  border-radius: 5px;
+  padding: 5px;
+}

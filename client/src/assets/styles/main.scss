@@ -1,0 +1,25 @@
+
+// Utilities
+//@import './utils/variables';
+
+// Base
+@import './base/hyperlinks';
+
+// Layouts
+@import './layouts/header';
+
+// Components
+@import './components/button';
+@import './components/avatar';
+@import './components/logo';
+@import './components/field';
+
+// Pages
+@import './pages/main-page';
+@import 'pages/sign-in-up-page';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}

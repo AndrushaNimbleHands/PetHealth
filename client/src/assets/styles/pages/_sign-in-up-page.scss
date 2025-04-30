@@ -1,0 +1,49 @@
+$primary-yellow: #FFEB56;
+$light-yellow: #FFF49F;
+
+.sign-in__container, .sign-up__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
+}
+.sign-in__info-container, .sign-up__info-container{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.sign-in__logo-container, .sign-up__logo-container{
+  width: 50%;
+  background: linear-gradient(
+                  to left,
+                  $primary-yellow 0%,
+                  $light-yellow 80%,
+                  transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in__title, .sign-up__title{
+  font-size: 300%;
+  font-family: "Inter", "Arial", system-ui;
+  margin: 50px 0;
+}
+
+.sign-in__dont-have-account, .sign-up__have-account{
+  font-size: 120%;
+  font-family: "Inter", "Arial", system-ui;
+}
+
+.sign-in__send-code-container, .sign-up__send-code-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
