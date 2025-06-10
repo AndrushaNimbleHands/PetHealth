@@ -1,5 +1,7 @@
 $primary-yellow: #FFEB56;
+$primary-green: #81fd37;
 $light-yellow: #FFF49F;
+$light-green: #c5ff9f;
 
 .header {
   background: linear-gradient(
@@ -10,13 +12,22 @@ $light-yellow: #FFF49F;
   );
   display: flex;
   flex-direction: row;
-  padding: 20px;
   align-items: center;
   justify-content: space-between;
+  padding: 30px 10px;
 }
 
 .header__logo-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.header.admin{
+  background: linear-gradient(
+                  to bottom,
+                  $primary-green 0%,
+                  $light-green 50%,
+                  transparent 100%
+  );
 }

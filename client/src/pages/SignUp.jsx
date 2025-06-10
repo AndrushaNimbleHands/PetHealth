@@ -1,31 +1,118 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../assets/styles/main.scss';
 import Field from "../components/Field";
 import Button from "../components/Button";
-import {useNavigate} from "react-router-dom";
-
-
+import { useNavigate } from "react-router-dom";
+import { sendCode, signUp } from "../services/authService";
 
 export default function SignUp() {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [code, setCode] = useState('');
+    const [phone, setPhone] = useState('');
+    const [sent, setSent] = useState(false);
+    const [error, setError] = useState('');
+    const [cooldown, setCooldown] = useState(0);
+
+    const handleSend = async () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^\+380\d{9}$/;
+
+        if (!emailRegex.test(email.trim())) {
+            setError('Введіть коректну email-адресу');
+            return;
+        }
+        if (!phoneRegex.test(phone.trim())) {
+            setError('Введіть номер телефону у форматі +380XXXXXXXXX');
+            return;
+        }
+
+        try {
+            await sendCode(email);
+            setSent(true);
+            setError("");
+            setCooldown(60); // 1:00
+
+            const interval = setInterval(() => {
+                setCooldown(prev => {
+                    if (prev <= 1) {
+                        clearInterval(interval);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+
+        } catch (e) {
+            setError(e.message || 'Не вдалося надіслати код');
+        }
+    };
+
+    const handleSignUp = async () => {
+        try {
+            const res = await signUp(email, phone, code);
+            localStorage.setItem("token", res.token);
+            localStorage.setItem("role", res.role);
+
+            if (res.role === 'admin') {
+                navigate('/admin');
+            } else {
+                navigate('/');
+            }
+        }
+        catch (e) {
+            setError(e.message || 'Помилка при реєстрації');
+        }
+    }
+
     return (
         <div className="sign-up__container">
             <div className="sign-up__info-container">
-                <div className="sign-up__title">Sign up</div>
-                <Field title="Phone number:" type="tel" placeholder="+38 (099) 000 11 22"></Field>
+                <div className="sign-up__title">Реєстрація</div>
+
+                <Field
+                    title="Номер телефону:" type="tel"
+                    placeholder="+380XXXXXXXXX"
+                    onChange={e => setPhone(e.target.value)}
+                />
+
                 <div className="sign-up__send-code-container">
-                    <Field title="Email:" type="email" placeholder="name@gmail.com"></Field>
-                    <Button className="sign-up__send-code-button" content={"Send code"}/>
+                    <Field
+                        title="Email:" type="email"
+                        placeholder="name@gmail.com"
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    {cooldown > 0 ? (
+                        <div className="sign-up__cooldown-text">
+                            Повторно через {Math.floor(cooldown / 60)}:{(cooldown % 60).toString().padStart(2, '0')}
+                        </div>
+                    ) : (
+                        <Button className="sign-up__send-code-button" content={"Код"} onClick={handleSend} />
+                    )}
                 </div>
-                <Field className="password-field" title="Code from email:" type="text"></Field>
-                <Button className="sign-up__button" content={"Sign up"} onClick={() => {navigate('/')}}/>
+
+                {sent && (
+                    <>
+                        <Field
+                            className="code-field"
+                            title="Код з email:"
+                            type="text"
+                            onChange={e => setCode(e.target.value)}
+                        />
+                        <Button className="sign-up__button" content={"Sign up"} onClick={handleSignUp} />
+                    </>
+                )}
+
+                {error && <p style={{ color: "red" }}>{error}</p>}
+
                 <div className="sign-up__have-account">
-                    Already have an account? <a href="/signin" className="red-href">Sign in</a>
+                    Вже маєш акаунт? <a href="/signin" className="red-href">Увійди</a>
                 </div>
             </div>
+
             <div className="sign-up__logo-container">
-                <img src="/assets/images/logo-large.png" alt="PetHealth Logo Large" className="sign-up__logo"/>
-                <img src="/assets/images/name-large.png" alt="PetHealth Name Large" className="sign-up__name"/>
+                <img src="/assets/images/logo-large.png" alt="PetHealth Logo Large" className="sign-up__logo" />
+                <img src="/assets/images/name-large.png" alt="PetHealth Name Large" className="sign-up__name" />
             </div>
         </div>
     );

@@ -1,0 +1,124 @@
+.admin-appointments-container{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin-appointments__filter-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.admin-appointments__filter{
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.admin-appointments__filter label{
+  margin-right: 20px;
+}
+.admin-appointments__filter input, select{
+  width: 300px;
+}
+.admin-appointments__list{
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 500px;
+  font-size: 20px;
+  width: 100%
+}
+.admin-appointments__list p,{
+  margin: 0;
+}
+.admin-appointments__list-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.admin-appointments__list-item-container{
+  display: flex;
+  flex-direction: column;
+}
+.admin-appointments__list-item-container hr{
+  width: 100%;
+}
+.admin-appointments__list-item-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-left: 20px;
+}
+.admin-appointments__list-item-buttons .admin-appointments__button{
+  margin: 0 5px;
+}
+.admin-appointments__details p{
+  margin: 5px 0 0;
+  font-size: 20px;
+}
+.admin-appointments__details-buttons,
+.admin-appointments__editing-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.admin-appointments__editing-buttons{
+  justify-content: center;
+}
+.admin-appointments__details{
+  font-size: 20px;
+}
+.admin-appointments__details-editing-field{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.admin-appointments__details-editing-field input,
+.admin-appointments__details-editing-field textarea,
+.admin-appointments__details-editing-field select{
+  margin: 0;
+  padding: 0;
+}
+.admin-appointments__details-editing-field textarea{
+  align-content: flex-start;
+}
+.admin-appointments__details-overflow{
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 600px;
+}
+.admin-appointments__used-medicines-field{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.admin-appointments__medicines-selector-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+}
+.admin-appointments__medicines-selector-container select{
+  margin: 0 20px 0 0;
+}
+.admin-appointments__new-recipe-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.admin-appointments__save-recipe-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}

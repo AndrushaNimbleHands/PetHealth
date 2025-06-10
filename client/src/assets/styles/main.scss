@@ -3,23 +3,52 @@
 //@import './utils/variables';
 
 // Base
-@import './base/hyperlinks';
+@import 'base/hyperlinks';
 
 // Layouts
 @import './layouts/header';
+@import './layouts/side-bar';
+@import './layouts/left-menu';
+@import './layouts/main-content';
+@import './layouts/edit-user-info';
+@import './layouts/edit-pet-card-info';
+@import './layouts/edit-account-info';
+@import './layouts/appointment';
+@import './layouts/pet-card-client';
+@import './layouts/procedure';
+@import './layouts/users';
+@import './layouts/pet-cards-admin';
+@import './layouts/schedule';
+@import './layouts/pharmacy-admin';
+@import './layouts/client-pharmacy';
+@import './layouts/admin-orders';
+@import './layouts/admin-appointment';
 
 // Components
 @import './components/button';
 @import './components/avatar';
 @import './components/logo';
 @import './components/field';
+@import './components/selector';
+@import './components/procedure-item';
+@import './components/product-form';
+@import './components/category';
+@import './components/filters';
+@import './components/product-card';
+@import './components/cart';
+@import './components/order';
+@import './components/pagination';
 
 // Pages
 @import './pages/main-page';
-@import 'pages/sign-in-up-page';
+@import './pages/sign-in-up-page';
+@import './pages/error-page';
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: white;
+}
+body{
+  overflow: hidden;
 }

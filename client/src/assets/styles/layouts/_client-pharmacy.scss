@@ -1,0 +1,24 @@
+.client-pharmacy__container{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  display: flex;
+  flex-direction: row;
+  max-height: 700px;
+  width: 100%;
+}
+.client-pharmacy__products-list{
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 20px;
+}
+.client-pharmacy__cards-container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-right: 50px;
+}
+.client-pharmacy__cart-container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

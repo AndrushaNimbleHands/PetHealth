@@ -1,0 +1,33 @@
+.procedures-container{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  display: flex;
+  flex-direction: row;
+}
+.procedures-container li{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 18px;
+  justify-content: space-between;
+}
+
+.procedures-container ul{
+  margin: 0;
+  padding: 0;
+}
+
+.procedures-button-container{
+  display: flex;
+  flex-direction: row;
+}
+.procedures-item{
+  margin-left: 50px;
+}
+.procedures-list{
+  min-width: 600px;
+}
+.procedures-list ul{
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 700px;
+}

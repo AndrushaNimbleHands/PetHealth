@@ -1,0 +1,55 @@
+.product-form{
+  display: flex;
+  flex-direction: column;
+}
+.product-form label {
+  font-size: 20px;
+  margin-right: 20px;
+}
+.product-form__name,
+.product-form__short-description,
+.product-form__long-description,
+.product-form__species,
+.product-form__category,
+.product-form__prescription,
+.product-form__price,
+.product-form__unit,
+.product-form__stock{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+
+}
+.product-form__name input, select,
+.product-form__short-description input, select,
+.product-form__long-description input, select,
+.product-form__species input, select,
+.product-form__category input, select,
+.product-form__prescription input, select,
+.product-form__price input, select,
+.product-form__unit input, select,
+.product-form__stock input, select {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  resize: none;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0;
+}
+.product-form__long-description textarea{
+  min-width: 250px;
+  min-height: 100px;
+  text-align: left;
+  align-content: flex-start;
+}
+.product-form__prescription{
+  justify-content: flex-start;
+}
+.product-form__prescription input{
+  transform: scale(1.5);
+}

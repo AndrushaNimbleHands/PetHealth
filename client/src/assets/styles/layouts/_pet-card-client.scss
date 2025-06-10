@@ -1,0 +1,67 @@
+.pet-card-client__info{
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.pet-card-client__container{
+  display: flex;
+  flex-direction: row;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  max-height: 750px;
+}
+.pet-card-client__pet-name label{
+  margin-right: 20px;
+  font-size: 20px;
+}
+.pet-card-client__pet-name select{
+  font-size: 20px;
+}
+.pet-card-client__pet-info{
+  font-size: 20px;
+}
+
+.pet-card-client__card-info-container select, option, input, {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  resize: none;
+  align-content: center;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+}
+.pet-card-client__buttons{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.pet-card-client__title{
+  text-align: center;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  margin: 10px;
+}
+.pet-card-client__appointments-list-item{
+  display: flex;
+  flex-direction: row;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.pet-card-client__card-info-container{
+  margin-right: 50px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.pet-card-client__appointments-info-container{
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+}
+.pet-card-client__appointments-info-container p{
+  margin: 10px 0 0;
+}

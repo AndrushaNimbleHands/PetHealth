@@ -1,9 +1,20 @@
-.header__default-user-avatar {
-  width: 80px;
-  height: 80px;
-  background-color: white;
-  border-radius: 50%;
-  border: 1px solid black;
-  //margin-top: 20px;
-  justify-self: right;
+.header__side-bar-button {
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  transform: translateY(-50%);
+}
+
+.header__side-bar-button span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: black;
+  border-radius: 3px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

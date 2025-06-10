@@ -1,0 +1,75 @@
+$primary-yellow: #FFEC56;
+$dots-yellow: rgba(237, 237, 117, 0.43);
+$dots-green: rgba(17, 112, 43, 0.43);
+$primary-violet-gray: #d4c9f3;
+$primary-blue-green: rgb(127, 223, 180);
+$primary-dark-gray: #333333;
+$primary-dark-gray-transparent: rgba(51, 51, 51, 0.59);
+
+.side-bar__container{
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 500px;
+  height: 100%;
+  transition: transform 0.3s linear;
+}
+
+.side-bar__container-open{
+  transform: translateX(-100%);
+}
+
+.side-bar{
+  background-color: $primary-violet-gray;
+  background-image: radial-gradient(
+                  $dots-yellow,
+                  0.5px,
+                  transparent 4px);
+  background-size: 12px 12px;
+  height: 100%;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: stretch;
+}
+
+.side-bar.admin{
+  background-color: $primary-blue-green;
+  background-image: radial-gradient(
+                  $dots-green,
+                  0.5px,
+                  transparent 4px);
+}
+
+.side-bar.side-bar-open{
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.50);
+}
+
+.side-bar__user{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: flex-end;
+  font-size: 25px;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+}
+.side-bar__user p{
+  margin: 5px 0;
+  padding: 0;
+}
+
+.side-bar__list-item{
+  margin: 0;
+  padding: 0;
+}
+
+.side-bar__list{
+  padding: 0;
+  margin: 0;
+  width: 200px;
+}
+

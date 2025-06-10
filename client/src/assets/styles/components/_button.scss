@@ -1,28 +1,44 @@
 $primary-bg-yellow: #FFFCE9;
+$primary-bg-green: #e1fac0;
+$bg-green: #90f1c0;
+$bg-hover-green: rgba(0, 143, 79, 0.9);
 $primary-hover-yellow: #F5E670;
+$primary-hover-orange: rgba(166, 101, 11, 0.58);
+$primary-hover-green: #489732;
+$primary-light-gray: #F5F5F5;
+$primary-dark-gray: rgba(62, 56, 83, 0.53);
+$primary-light-red: #ffe9e9;
+$primary-red: #ff8484;
+$primary-hover-red: rgba(110, 0, 0, 0.75);
+$primary-dark-red: rgba(153, 0, 0, 0.63);
 
 .left-menu__button,
 .sign-in__button,
-.sign-up__button {
+.sign-up__button,
+.appointment__slots-item{
   background-color: $primary-bg-yellow;
   border: none;
   padding: 15px 30px;
   border-radius: 10px;
   font-size: 16px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: background 0.3s ease;
   margin: 2vh;
+  width: 300px;
+}
+
+.left-menu__button.admin {
+  background-color: $primary-bg-green;
 }
 
 .sign-in__button,
 .sign-up__button,
 .sign-in__send-code-button,
-.sign-up__send-code-button{
+.sign-up__send-code-button, {
   background-color: $primary-bg-yellow;
-  box-shadow:
-          inset 2px 2px 5px rgba(0,0,0,0.2),
-          2px 2px 5px rgba(0,0,0,0.2);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+  2px 2px 5px rgba(0, 0, 0, 0.2);
   margin: 50px 0;
 }
 
@@ -30,15 +46,19 @@ $primary-hover-yellow: #F5E670;
 .sign-up__button:hover,
 .left-menu__button:hover,
 .sign-in__send-code-button:hover,
-.sign-up__send-code-button:hover {
+.sign-up__send-code-button:hover,
+.pet-card-admin__appointment-button:hover,
+.pet-card-admin__booking-button:hover{
   background-color: $primary-hover-yellow;
+}
+
+.left-menu__button.admin:hover {
+  background-color: $primary-hover-green;
 }
 
 .button {
   font-family: "Source Serif Pro", "Times New Roman", serif;
-  min-width: 100px;
-  width: 20%;
-  font-size: 150%;
+  font-size: 25px;
   text-align: center;
 }
 
@@ -47,4 +67,308 @@ $primary-hover-yellow: #F5E670;
   width: 120px;
   border-radius: 5px;
   padding: 5px;
+}
+
+.image-button img {
+  cursor: pointer;
+}
+
+.image-button img:hover {
+  filter: brightness(0.0);
+}
+
+.side-bar__image-button {
+  align-self: flex-start;
+}
+
+.side-bar__button, .edit-info__button {
+  background-color: $primary-light-gray;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin: 2vh;
+  width: 80%;
+}
+
+.side-bar__button.exit-button{
+  background-color: $primary-light-red;
+}
+
+.side-bar__button:hover,
+.error-page__back-button:hover,
+.edit-info__button:hover,
+.edit-info__back-button:hover {
+  background-color: $primary-dark-gray;
+  color: white;
+}
+
+.side-bar__button.exit-button:hover,
+.error-page__back-button:hover,
+.edit-info__back-button:hover,{
+  background-color: $primary-dark-red;
+}
+
+.error-page__back-button {
+  background-color: $primary-light-red;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2),
+  inset 0 0 20px $primary-dark-red;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin: 2vh;
+  width: min-content;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.edit-info__button {
+  width: fit-content;
+  justify-self: center;
+}
+
+.edit-pet-card-info__choose-button {
+  width: 100%;
+  background-color: $primary-bg-yellow;
+  padding: 5px 20px;
+  margin: 10px 5px;
+}
+
+.procedures-container__display-button {
+
+}
+
+.procedures-container__button, .procedure-item__button,
+.pet-card-admin__create-button,
+.appointment__button,
+.schedule__button,
+.pharmacy-admin__button,
+.product-card__button{
+  background-color: $bg-green;
+  border: none;
+  padding: 5px 30px;
+  border-radius: 5px;
+  font-size: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: max-content;
+}
+
+.procedures-container__button:hover,
+.procedure-item__button:hover,
+.procedures-button:hover,
+.users-button:hover,
+.pet-card-admin__button:hover,
+.pet-card-admin__card-item-button:hover,
+.pet-card-admin__create-button:hover,
+.appointment__button:hover,
+.pet-card-client__button:hover,
+.schedule__button:hover,
+.pharmacy-admin__button:hover,
+.category__save-button:hover,
+.category__edit-button:hover,
+.product-form__button:hover,
+.product-card__button:hover,
+.cart__button:hover,
+.admin-orders__button:hover,
+.admin-appointments__button:hover,{
+  background-color: $bg-hover-green;
+}
+
+.procedures-button,
+.users-button,
+.pet-card-admin__button,
+.pet-card-admin__card-item-button,
+.pet-card-client__button,
+.category__save-button,
+.category__button,
+.product-form__button,
+.pagination__button,
+.cart__button,
+.admin-orders__button,
+.admin-appointments__button{
+  background-color: $bg-green;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: max-content;
+  margin: 0 5px;
+}
+.procedures__archive-button,
+.users__archive-button,
+.pet-card-admin__archive-button,
+.pet-card-client__back-button,
+.pharmacy-admin__archive-button,
+.pagination__button{
+  background-color: $primary-hover-yellow;
+}
+.procedures__delete-button,
+.users__delete-button,
+.users-editing__close-button,
+.procedure-item__back-button,
+.pet-card-admin__delete-button,
+.pet-card-admin__back-button,
+.pet-card-admin__card-item-back-button ,
+.pet-card-client__cancel-button,
+.pharmacy-admin__delete-button,
+.category__delete-button,
+.cart__delete-item-button,
+.cart__cancel-button,
+.admin-orders__back-button,
+.admin-orders__cancel-button,
+.admin-appointments__delete-button,
+.admin-appointments__back-button,
+.admin-appointments__cancel-button{
+  background-color: $primary-red;
+}
+.procedures__delete-button:hover,
+.users__delete-button:hover,
+.users-editing__close-button:hover,
+.procedure-item__back-button:hover,
+.pet-card-admin__delete-button:hover,
+.pet-card-admin__back-button:hover,
+.pet-card-admin__card-item-back-button:hover,
+.pet-card-client__cancel-button:hover,
+.pharmacy-admin__delete-button:hover,
+.category__delete-button:hover,
+.cart__delete-item-button:hover,
+.cart__cancel-button:hover,
+.admin-orders__back-button:hover,
+.admin-orders__cancel-button:hover,
+.admin-appointments__delete-button:hover,
+.admin-appointments__back-button:hover,
+.admin-appointments__cancel-button:hover,{
+  background-color: $primary-hover-red;
+  color: lightgray;
+}
+
+.procedure-item__button{
+  margin-right: 20px;
+}
+
+.pet-card-admin__appointment-button,
+.pet-card-admin__booking-button,
+.pet-card-client__appointments-button,
+.pet-card-client__bookings-button,
+.admin-appointments__app-book-button{
+  background-color: $primary-bg-yellow;
+  border: 0.5px solid $primary-hover-orange;
+}
+
+.pet-card-admin__appointment-button:hover,
+.pet-card-admin__booking-button:hover,
+.pet-card-client__appointments-button:hover,
+.pet-card-client__bookings-button:hover,
+.product-card__details-button,
+.product-card__close-button,
+.admin-appointments__app-book-button:hover{
+  background-color: $primary-hover-yellow;
+}
+
+.pet-card-admin__appointment-button-active,
+.pet-card-admin__booking-button-active,
+.pet-card-client__appointments-button-active,
+.pet-card-client__bookings-button-active{
+  background-color: $primary-dark-gray;
+}
+
+.procedures__archive-button:hover,
+.users__archive-button:hover,
+.pet-card-admin__archive-button:hover,
+.appointment__slots-item:hover,
+.pet-card-client__back-button:hover,
+.pharmacy-admin__archive-button:hover,
+.product-card__details-button:hover,
+.product-card__close-button:hover,
+.pagination__button:hover{
+  background-color: $primary-hover-orange;
+}
+.pet-card-admin__appointment-button-active:hover,
+.pet-card-admin__booking-button-active:hover,
+.pet-card-client__appointments-button-active:hover,
+.pet-card-client__bookings-button-active:hover{
+  background-color: $primary-dark-gray;
+}
+
+.pet-card-admin__card-item-button{
+  margin: 10px 10px;
+}
+
+.pet-card-admin__appointment-editing-button,{
+  margin: 20px auto;
+}
+
+.pet-card-admin__appointment-back-button{
+  margin: auto;
+}
+
+.appointment__slots-item{
+  width: 100px;
+  font-size: 18px;
+  margin: 2px;
+  border: 1px solid $primary-hover-orange;
+  padding: 5px;
+}
+.appointment__slots-item.selected-slot{
+  background-color: $primary-hover-orange;
+  border: 1px solid $primary-dark-gray;
+}
+
+.appointment__save-button{
+  margin: 30px 0;
+}
+
+.pet-card-client__details-button{
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pet-card-client__back-button,
+.pet-card-client__cancel-button,
+.product-form__save-button{
+  padding: 5px 25px;
+  margin: 20px auto;
+}
+
+.schedule__save-button{
+  align-self: flex-end;
+  margin: 20px 0;
+}
+.pharmacy-admin__product-button, {
+  margin: 0 10px;
+}
+.product-card__button,{
+  margin: 5px 0;
+}
+.pagination__button.disabled{
+  background-color: $primary-dark-gray;
+  cursor: default;
+}
+.admin-appointments__button{
+  margin: 20px;
+}
+.admin-appointments__cancel-button,
+.admin-appointments__add-medicine-button  {
+  font-size: 25px;
+  margin: 0 0 0 5px;
+}
+.admin-appointments__new-recipe-button,
+.admin-appointments__edit-recipe-button, {
+  margin: 10px 0 0 0;
+}
+.pharmacy-admin__display-button{
+  padding: 5px 10px;
 }

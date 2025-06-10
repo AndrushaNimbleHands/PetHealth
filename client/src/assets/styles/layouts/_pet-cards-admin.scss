@@ -1,0 +1,258 @@
+.pet-card-admin-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+}
+
+.pet-card-admin__general-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.pet-card-admin__list-container {
+  margin-right: 50px;
+  max-width: 700px;
+}
+
+.pet-card-admin-container div {
+  font-size: 20px;
+}
+
+.pet-card-admin-container hr {
+  width: 100%;
+}
+
+.pet-card-admin-container select, option, input, {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  resize: none;
+  align-content: center;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+}
+
+.pet-card-admin__filters {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pet-card-admin__filters-selector {
+  margin: 0 20px;
+}
+
+.pet-card-admin__card-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pet-card-admin__card-item p,
+.pet-card-admin__card-details p {
+  margin: 0;
+}
+
+.pet-card-admin__card-item__buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.pet-card-admin__card-item-info {
+  margin-right: 20px;
+}
+
+.pet-card-admin__card-item-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  margin: 20px 0;
+}
+.pet-card-admin__edit-card-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.pet-card-admin__card-item-appointment-buttons,
+.pet-card-admin__card-item-editing__buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.pet-card-admin__card-item-appointments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pet-card-admin__card-editing {
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-card-admin__card-editing__field {
+  min-width: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.pet-card-admin__card-editing__field label {
+  margin-right: 20px;
+}
+
+.pet-card-admin__card-editing__field select {
+  margin: 0;
+}
+
+.pet-card-admin__card-item-editing__buttons {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.pet-card-admin__owner select, option {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  resize: none;
+  align-content: center;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+}
+
+.pet-card-admin__owner label {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.pet-card-admin__new-card-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.pet-card-admin__title {
+  text-align: center;
+}
+
+.pet-card-admin__card-item-appointment-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pet-card-admin__appointments-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-card-admin__appointments-list-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pet-card-admin__appointment-item-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pet-card-admin__appointment-item-short-info {
+  margin-right: 20px;
+}
+
+.pet-card-admin__card-expanded-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.pet-card-admin__card-info-section {
+  margin-right: 50px;
+}
+
+.pet-card-admin__appointment-details p {
+  margin: 0;
+}
+
+.pet-card-admin__appointment-editing-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.pet-card-admin__appointment-status,
+.pet-card-admin__appointment-weight,
+.pet-card-admin__appointment-temperature,
+.pet-card-admin__appointment-condition,
+.pet-card-admin__appointment-diagnosis,
+.pet-card-admin__appointment-prescription {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.pet-card-admin__appointment-status label,
+.pet-card-admin__appointment-weight label,
+.pet-card-admin__appointment-temperature label,
+.pet-card-admin__appointment-condition label,
+.pet-card-admin__appointment-diagnosis label,
+.pet-card-admin__appointment-prescription label {
+  margin-right: 20px;
+}
+.pet-card-admin__appointment-prescription textarea,
+.pet-card-admin__appointment-condition textarea,
+.pet-card-admin__appointment-diagnosis textarea{
+  min-width: 300px;
+}
+.pet-card-admin__appointment-prescription textarea{
+  min-height: 100px;
+  
+}
+.pet-card-admin__appointment-status select{
+  margin: 0;
+}
+
+.pet-card-admin__appointments-list-item__container{
+  display: flex;
+  flex-direction: column;
+}
+.pet-card-admin__card-list{
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 700px;
+}
+.pet-card-admin__card-create{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  width: 100%;
+
+}

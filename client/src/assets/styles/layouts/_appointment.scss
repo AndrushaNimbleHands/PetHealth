@@ -1,0 +1,82 @@
+.appointment-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+}
+
+.appointment__pet-card-field,
+.appointment__procedure-field,
+.appointment__description-field,
+.appointment__field{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+}
+.appointment__field{
+  margin-top: 10px;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+}
+.appointment__field title{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+}
+.admin-appointment-container{
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 50%;
+  max-height: 600px;
+
+}
+.appointment__description-field {
+  flex-direction: column;
+}
+
+.appointment__pet-card-field label,
+.appointment__procedure-field label,
+.appointment__description-field label {
+  margin-right: 20px;
+}
+
+.appointment__pet-card-field select,
+.appointment__procedure-field select,
+.appointment__description-field textarea {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  align-content: center;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+}
+
+.appointment__description-field textarea {
+  align-content: flex-start;
+  width: 80%;
+  min-height: 100px;
+}
+
+.appointment__slots-container {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.appointment__slots-container label{
+  margin-top: 20px;
+}
+
+.appointment__slots-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 700px;
+}
+
+.appointment__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

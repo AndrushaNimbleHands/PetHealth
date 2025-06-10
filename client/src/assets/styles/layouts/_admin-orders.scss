@@ -1,0 +1,76 @@
+.admin-orders-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  width: 70%;
+  align-items: center;
+}
+.admin-orders__filter,
+.admin-orders__search{
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 20px 0;
+}
+.admin-orders__filter label,
+.admin-orders__search label{
+  margin-right: 20px;
+}
+.admin-orders__orders-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 500px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  justify-items: center;
+}
+
+.admin-order__item {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-order__buttons {
+  align-self: flex-end;
+}
+
+.admin-order-details {
+  font-size: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 700px;
+  width: max-content;
+}
+.admin-order__detail-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.admin-order__editing-container,
+.admin-order__editing{
+  display: flex;
+  flex-direction: column;
+}
+.admin-order__editing-field{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.admin-order__editing-field label{
+  margin-right: 20px;
+}
+.admin-order__editing-field input {
+  width: 300px;
+}
+.admin-order__editing-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}

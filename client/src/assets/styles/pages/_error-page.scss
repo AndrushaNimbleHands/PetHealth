@@ -1,0 +1,45 @@
+$primary-red: #ff6363;
+$light-red: #efa2a2;
+
+.error-header {
+  background: linear-gradient(
+                  to bottom,
+                  $primary-red 0%,
+                  $light-red 50%,
+                  transparent 100%
+  );
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 10px;
+}
+
+.error-page__container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.error-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+}
+
+.error-text p {
+  margin: 10px 0;
+}
+
+.error-hr{
+  width: 50%;
+  height: 2px;
+  background-color: black;
+  border: none;
+}
+
+.error-page__back-button__container{
+}

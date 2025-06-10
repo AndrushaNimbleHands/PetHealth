@@ -1,0 +1,52 @@
+.procedure-item-container form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.procedure-item__doctor label{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.procedure-item__doctor select, option,
+.procedure-item__price input,
+.procedure-item__duration input {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  resize: none;
+  align-content: center;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+}
+.procedure-item__price, .procedure-item__duration{
+  margin-top: 20px;
+}
+.procedure-item__price label, .procedure-item__duration label{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.procedure-item__price input, .procedure-item__duration input{
+  width: 100px;
+}
+.procedure-item__doctor, .procedure-item__self-booking {
+  margin: 20px 0;
+}
+
+.procedure-item__self-booking label{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.procedure-item__self-booking input{
+  transform: scale(2);
+  box-shadow: 0 2px 5px 0.5px rgba(0, 0, 0, 0.35);
+}
+
+.procedure-item__down-buttons-container{
+  display: flex;
+  flex-direction: row;
+}

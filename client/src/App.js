@@ -1,20 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import MainPage from './pages/MainPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
+import MainPage from './pages/MainPage';
 import SignIn from './pages/SignIn';
-import SignUp from "./pages/SignUp";
+import SignUp from './pages/SignUp';
+import ErrorPage from './pages/ErrorPage';
+import AdminMainPage from './pages/AdminMainPage';
+import RequireAuth from './components/RequireAuth';
+
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<MainPage />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
-                {/* Маршрут 404 на випадок неправильного шляху */}
-                <Route path="*" element={<MainPage />} />
+                <Route
+                    path="/"
+                    element={
+                        <RequireAuth roleRequired="client">
+                            <MainPage />
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/admin"
+                    element={
+                        <RequireAuth roleRequired="admin">
+                            <AdminMainPage />
+                        </RequireAuth>
+                    }
+                />
+                <Route path="/error" element={<ErrorPage />} />
+                <Route path="*" element={<Navigate to="/error" replace />} />
             </Routes>
         </BrowserRouter>
     );

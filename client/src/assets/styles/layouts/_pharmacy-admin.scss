@@ -1,0 +1,83 @@
+.pharmacy-admin__container{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+}
+.pharmacy-admin__products{
+  display: flex;
+  flex-direction: row;
+}
+.pharmacy-admin__products-list-container{
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+  width: 100%;
+}
+.pharmacy-admin__filters,
+.pharmacy-admin__search-input{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  font-size: 20px;
+}
+.pharmacy-admin__filters{
+  max-width: 500px;
+}
+.pharmacy-admin__filters select, option, input, textarea{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  resize: none;
+  align-content: center;
+  box-shadow: 0 8px 16.5px 1px rgba(0, 0, 0, 0.50);
+  border: none;
+  border-bottom: 1px black solid;
+  border-radius: 3px;
+}
+
+.pharmacy-admin__products-table{
+  font-size: 20px;
+}
+.pharmacy-admin__products-table-tbody{
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.pharmacy-admin__products-table tbody td,
+.pharmacy-admin__products-table th{
+  text-align: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+  vertical-align: middle;
+  height: 100%;
+}
+.pharmacy-admin__name,
+.pharmacy-admin__species,
+.pharmacy-admin__category{
+  max-width: 100px;
+}
+.pharmacy-admin__product-buttons div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+.pharmacy-admin__species-filter{
+  display: flex;
+  flex-direction: row;
+}
+.pharmacy-admin__species-filter label,.pharmacy-admin__species-filter select,
+.pharmacy-admin__category-filter label, .pharmacy-admin__category-filter select,
+.pharmacy-admin__search label, input{
+  margin-right: 10px;
+  font-size: 20px;
+}
+.pharmacy-admin__filter select{
+  width: 200px;
+}
+.pharmacy-admin__filter select option{
+  word-wrap: normal;
+}
+.pharmacy-admin__species-filter select, {
+  width: 150px;
+}

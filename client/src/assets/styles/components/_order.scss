@@ -1,0 +1,42 @@
+.order{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+
+}
+.orders__container{
+  width: max-content;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+
+}
+.order-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.order-item p{
+  margin: 0;
+}
+.order-item hr{
+  width: 100%;
+}
+.order-item__products p{
+  margin-top: 20px;
+}
+.order-item__products{
+  margin-left: 50px;
+  width: 50%;
+}
+.orders__filters{
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  margin: 30px 0;
+}
+.orders__filters input,
+.orders__filters select{
+  margin-left: 20px;
+  width: 200px;
+}

@@ -1,10 +1,15 @@
-.field__title{
+.field__title {
   margin: 20px 0 5px 0;
   font-family: "Inter", "Arial", system-ui;
   font-size: 140%;
 }
 
-.field__entering-area{
+.edit-info-title {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+}
+
+.field__entering-area {
   resize: none;
   width: 40vh;
   font-family: "Inter", "Arial", system-ui;
@@ -17,9 +22,49 @@
   border-radius: 3px;
 }
 
-.field__container{
+.field__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: max-content;
+}
+
+.procedure-item__name,
+.pet-card-admin__name,
+.pet-card-admin__breed,
+.pet-card-admin__birthday {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+}
+
+.pet-card-admin__name-title,
+.pet-card-admin__breed-title,
+.pet-card-admin__birthday-title,
+.pet-card-admin__owner,
+.procedure-item__name-title{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.pet-card-admin__owner,
+.pet-card-admin__species {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.procedure-item__name-title {
+  margin-top: 0;
+}
+
+.users-editing__field,
+.users-editing__field-title,
+.users-adding__field-title,
+.users-adding__field,
+.appointment__date-field,
+.appointment__procedure-field__title{
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
 }

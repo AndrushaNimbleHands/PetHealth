@@ -1,0 +1,75 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.cart-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cart__total{
+  font-weight: bold;
+  font-size: 20px;
+}
+.delivery-options__container,
+.payment-options__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.delivery-options__container label,
+.payment-options__container label,
+{
+  font-size: 18px;
+}
+
+.delivery-options__container input[type="text"],
+.payment-options__container input[type="text"],
+{
+  font-size: 18px;
+  width: 30%;
+}
+.delivery-options__container input[type="radio"],
+.payment-options__container input[type="radio"],
+{
+  transform: scale(1.3);
+}
+.delivery-options__container input,
+.payment-options__container input{
+  margin-top: 10px;
+}
+
+.cart__buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+.cart__buttons .cart__button,
+.cart__recipe-buttons .cart__button,{
+  margin-top: 10px;
+}
+.cart__confirmation{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+.cart__recipe-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cart__recipe-selector{
+  display: flex;
+  flex-direction:column;
+}
+.cart__recipe-buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}

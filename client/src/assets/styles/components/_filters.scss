@@ -1,0 +1,21 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: 20px;
+}
+
+.filters-search label, input, select,
+.filters-species label, input, select,
+.filters-category label, input, select {
+  margin-right: 10px;
+}
+.filters-search,
+.filters-species,
+.filters-category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
