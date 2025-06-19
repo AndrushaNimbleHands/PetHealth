@@ -12,7 +12,11 @@ export default function RequireAuth({ children, roleRequired }) {
         const invalidToken = !token || token === 'null' || token === 'undefined' || token.trim() === '';
         const invalidRole = !role || role === 'null' || role === 'undefined' || role.trim() === '';
 
-        if (!invalidToken && !invalidRole && (!roleRequired || role === roleRequired)) {
+        const roleAllowed = Array.isArray(roleRequired)
+            ? roleRequired.includes(role)
+            : role === roleRequired;
+
+        if (!invalidToken && !invalidRole && (!roleRequired || roleAllowed)) {
             setAuthorized(true);
         }
 

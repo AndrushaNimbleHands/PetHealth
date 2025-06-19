@@ -76,7 +76,7 @@ exports.signin = async (req, res) => {
     }
     await Code.findOneAndDelete({ email, code });
     const user = await User.findOne({ email });
-    if (user.isArchive) {
+    if (user.isArchived) {
         return res.status(404).json({ error: 'Акаунт цього користувача видалено. Зверніться до адміністрації PetHealth для відновлення.'});
     }
     if (!user) {

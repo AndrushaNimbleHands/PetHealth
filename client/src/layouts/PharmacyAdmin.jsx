@@ -60,25 +60,42 @@ export default function PharmacyAdmin() {
 
     const handleEdit = (product) => setEditProduct(product);
 
-    const handleDelete = async (id) => {
-        if (window.confirm('Видалити товар остаточно?')) {
-            await fetch(`/api/products/${id}`, {
-                method: 'DELETE', headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                }
-            });
-            fetchProducts();
-        }
-    };
-
     const handleArchive = async (id) => {
-        await fetch(`/api/products/${id}/archive`, {
-            method: 'PATCH', headers: {
+        const res = await fetch(`/api/products/${id}/archive`, {
+            method: 'PATCH',
+            headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         });
+
+        if (!res.ok) {
+            const data = await res.json();
+            alert(data.error || 'Не вдалося архівувати товар, адже він є у активних замовленнях.');
+            return;
+        }
+
         fetchProducts();
     };
+
+    const handleDelete = async (id) => {
+        if (!window.confirm('Видалити товар остаточно?')) return;
+
+        const res = await fetch(`/api/products/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        if (!res.ok) {
+            const data = await res.json();
+            alert(data.error || 'Не вдалося видалити товар, адже він є у активних замовленнях.');
+            return;
+        }
+
+        fetchProducts();
+    };
+
 
     const handleRestore = async (id) => {
         await fetch(`/api/products/${id}/restore`, {

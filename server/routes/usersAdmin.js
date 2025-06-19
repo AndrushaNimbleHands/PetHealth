@@ -5,6 +5,7 @@ const adminOnly = require('../middlewares/adminOnly');
 const userController = require("../controllers/userController");
 
 router.get('/', auth, adminOnly, userController.getAllUsers);
+router.post('/', auth, adminOnly, userController.createUser);
 router.patch('/:id/archive', auth, adminOnly, userController.archiveUser);
 router.patch('/:id/restore', auth, adminOnly, userController.restoreUser);
 router.patch('/:id', auth, adminOnly, userController.updateUser);

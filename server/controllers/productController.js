@@ -1,5 +1,35 @@
 const Product = require('../models/Product');
 
+const Order = require('../models/Order');
+
+async function isProductUsedInActiveOrders(productId) {
+    const activeStatuses = ['pending', 'shipping'];
+
+    const activeOrders = await Order.find({
+        status: { $in: activeStatuses },
+        'items.productId': productId
+    }).lean();
+
+    return activeOrders.length > 0;
+}
+
+exports.remove = async (req, res) => {
+    try {
+        const used = await isProductUsedInActiveOrders(req.params.id);
+        if (used) {
+            return res.status(409).json({ message: 'Неможливо видалити товар: він є у незавершених замовленнях.' });
+        }
+
+        const deleted = await Product.findByIdAndDelete(req.params.id);
+        if (!deleted) return res.status(404).json({ error: 'Product not found' });
+        res.json({ message: 'Product deleted' });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+};
+
+
+
 exports.getAll = async (req, res) => {
     try {
         const { archived, species, categoryId, search, prescription } = req.query;
@@ -73,6 +103,11 @@ exports.update = async (req, res) => {
 
 exports.archive = async (req, res) => {
     try {
+        const used = await isProductUsedInActiveOrders(req.params.id);
+        if (used) {
+            return res.status(409).json({ message: 'Неможливо архівувати товар: він є у незавершених замовленнях.' });
+        }
+
         const updated = await Product.findByIdAndUpdate(
             req.params.id,
             { isArchived: true, archivedAt: new Date() },
@@ -84,6 +119,7 @@ exports.archive = async (req, res) => {
         res.status(500).json({ error: e.message });
     }
 };
+
 
 exports.restore = async (req, res) => {
     try {
@@ -99,12 +135,3 @@ exports.restore = async (req, res) => {
     }
 };
 
-exports.remove = async (req, res) => {
-    try {
-        const deleted = await Product.findByIdAndDelete(req.params.id);
-        if (!deleted) return res.status(404).json({ error: 'Product not found' });
-        res.json({ message: 'Product deleted' });
-    } catch (e) {
-        res.status(500).json({ error: e.message });
-    }
-};

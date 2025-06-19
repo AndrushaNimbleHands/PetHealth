@@ -15,8 +15,6 @@ export default function MainPage() {
     const [isPetCard, setIsPetCard] = useState(false);
     const [isPharmacy, setIsPharmacy] = useState(false);
     const [isOrders, setIsOrders] = useState(false);
-    const [ready, setReady] = useState(false);
-    const navigate = useNavigate();
 
     const appointmentOnClick = () => {
         setIsCreateAppointment(true);

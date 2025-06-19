@@ -47,7 +47,7 @@ export default function SignIn() {
             const res = await signIn(email, code);
             localStorage.setItem("token", res.token);
             localStorage.setItem("role", res.role);
-            if (res.role === 'admin') {
+            if (res.role === 'admin' || res.role === 'doctor') {
                 navigate('/admin');
             } else {
                 navigate('/');

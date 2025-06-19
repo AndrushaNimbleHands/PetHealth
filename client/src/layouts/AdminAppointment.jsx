@@ -33,10 +33,19 @@ export default function AdminAppointment() {
     };
 
     const handleDelete = async (id) => {
+        const appointment = appointments.find(a => a._id === id);
+        const isCancelled = appointment?.status === 'cancelled';
+        const isOlderThan30Days = new Date() - new Date(appointment.date) > 30 * 24 * 60 * 60 * 1000;
+
+        if (!isCancelled || !isOlderThan30Days) {
+            return alert('Видалити можна лише скасований прийом старше 30 днів.');
+        }
+
         if (!window.confirm("Ви впевнені, що хочете остаточно видалити прийом?")) return;
+
         const res = await fetch(`/api/appointments/${id}`, {
             method: 'DELETE',
-            headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}
+            headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
         });
         if (res.ok) {
             alert('Прийом видалено');
@@ -45,6 +54,7 @@ export default function AdminAppointment() {
             alert('Помилка при видаленні');
         }
     };
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -62,13 +72,22 @@ export default function AdminAppointment() {
     useEffect(refresh, [type, archived, speciesFilter, dateFilter, search]);
 
     const archive = async (id) => {
+        const appointment = appointments.find(a => a._id === id);
+        const isCancelled = appointment?.status === 'cancelled';
+        const isOlderThan30Days = new Date() - new Date(appointment.date) > 30 * 24 * 60 * 60 * 1000;
+
+        if (!isCancelled || !isOlderThan30Days) {
+            return alert('Архівувати можна лише скасований прийом старше 30 днів.');
+        }
+
         await fetch(`/api/appointments/${id}/archive`, {
             method: 'PATCH',
-            headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}
+            headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
         });
         setExpanded(null);
         refresh();
     };
+
 
     const restore = async (id) => {
         await fetch(`/api/appointments/${id}/restore`, {

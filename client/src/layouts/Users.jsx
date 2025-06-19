@@ -21,14 +21,14 @@ export default function Users({}) {
     const [newEmail, setNewEmail] = useState('');
     const [newPhone, setNewPhone] = useState('');
     const [newBirthday, setNewBirthday] = useState('');
-    const [newRole, setNewRole] = useState('user');
+    const [newRole, setNewRole] = useState('client');
 
     const openModal = (user) => {
         setEditingUser(user);
         setEditFirstName(user.firstName || '');
         setEditLastName(user.lastName || '');
         setEditEmail(user.email || '');
-        setEditRole(user.role || 'user');
+        setEditRole(user.role || 'client');
         setEditPhone(user.phone || '');
         setEditBirthday(user.birthday ? user.birthday.slice(0, 10) : '');
     };
@@ -123,14 +123,28 @@ export default function Users({}) {
     const archiveUser = async (id) => {
         const confirmed = window.confirm("Підтвердити архівування користувача?");
         if (!confirmed) return;
-        await fetch(`/api/users/${id}/archive`, {
-            method: 'PATCH',
-            headers: {
-                'Authorization': `Bearer ` + localStorage.getItem('token')
+
+        try {
+            const res = await fetch(`/api/users/${id}/archive`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ` + localStorage.getItem('token')
+                }
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                window.alert(data.message || 'Не вдалося архівувати користувача.');
+                return;
             }
-        });
-        fetchUsers();
+
+            fetchUsers();
+        } catch (err) {
+            console.error('Помилка архівації:', err);
+            window.alert('Сталася помилка при архівації.');
+        }
     };
+
 
     const restoreUser = async (id) => {
         const confirmed = window.confirm("Підтвердити відновлення користувача?");
@@ -147,15 +161,29 @@ export default function Users({}) {
     const deleteUser = async (id) => {
         const confirmed = window.confirm("Підтвердити видалення користувача?");
         if (!confirmed) return;
-        await fetch(`/api/users/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ` + localStorage.getItem('token')
+
+        try {
+            const res = await fetch(`/api/users/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ` + localStorage.getItem('token')
+                }
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                window.alert(data.message || 'Не вдалося видалити користувача.');
+                return;
             }
-        });
-        fetchUsers();
-        window.alert("Користувача видалено!");
+
+            fetchUsers();
+            window.alert("Користувача видалено!");
+        } catch (err) {
+            console.error('Помилка видалення:', err);
+            window.alert('Сталася помилка при видаленні.');
+        }
     };
+
 
     const closeModal = () => {
         setEditingUser(null);

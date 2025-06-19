@@ -4,6 +4,22 @@ const Schedule = require('../models/Schedule');
 const redis = require('../utils/redisClient');
 const { io } = require("../index");
 const mailer = require('../utils/mailer');
+exports.getByProcedure = async (req, res) => {
+    try {
+        const { procedureId } = req.params;
+
+        const appointments = await Appointment.find({
+            procedureId,
+            status: { $in: ['scheduled', 'in_progress', 'completed'] },
+            isArchived: false
+        });
+
+        res.json(appointments);
+    } catch (err) {
+        console.error('getByProcedure error:', err);
+        res.status(500).json({ message: 'Помилка при перевірці використання процедури' });
+    }
+};
 
 const sendAppointmentEmail = async ({ appointment, type = 'created' }) => {
     try {
@@ -23,7 +39,6 @@ const sendAppointmentEmail = async ({ appointment, type = 'created' }) => {
             }
         ]);
 
-        // Функція форматування дати у вигляді "ДД.ММ.РРРР"
         const formatDate = (dateStr) => {
             const date = new Date(dateStr);
             return date.toLocaleDateString('uk-UA', {
@@ -41,7 +56,6 @@ const sendAppointmentEmail = async ({ appointment, type = 'created' }) => {
             cancelled: 'Скасовано'
         };
 
-        // Якщо статус скасовано — відправляємо спрощене повідомлення
         if (appointment.status === 'cancelled') {
             const subject = `Скасування прийому №${appointment.appointmentNumber}`;
 
@@ -63,9 +77,6 @@ const sendAppointmentEmail = async ({ appointment, type = 'created' }) => {
             });
             return;
         }
-
-        // --- Повний лист для інших статусів ---
-
         const subject = type === 'created'
             ? `Підтвердження запису на прийом №${appointment.appointmentNumber}`
             : `Оновлення прийому №${appointment.appointmentNumber}`;
@@ -192,7 +203,6 @@ exports.getAvailableSlots = async (req, res) => {
         const slotStart = minutesToTime(cursor);
         const slotEnd = minutesToTime(cursor + duration);
 
-        // Якщо дата сьогодні, пропускаємо слоти в минулому
         if (isToday) {
             const [hour, minute] = slotStart.split(':').map(Number);
             const slotDateTime = new Date(date);

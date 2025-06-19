@@ -141,18 +141,30 @@ export default function PetCardsAdmin({appointmentOnClick, petCardOnClick}) {
     };
 
     const archiveCard = async (id) => {
+        const res = await fetch(`/api/appointments/by-pet/${id}`, {
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        });
+        const data = await res.json();
+        if (data.length > 0) {
+            alert('Неможливо архівувати пацієнта, оскільки існують пов’язані записи або прийоми.');
+            return;
+        }
+
         const confirmed = window.confirm("Підтвердити архівацію картки пацієнта?");
         if (!confirmed) return;
-        console.log('archiveCard called with id:', id); // 👈 додай це
+
         await fetch(`/api/petcards/${id}/archive`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ` + localStorage.getItem('token')
             }
         });
-        fetchCards();
+
         if (selectedCard?._id === id) setSelectedCard(null);
+        fetchCards();
     };
+
+
 
     const restoreCard = async (id) => {
         const confirmed = window.confirm("Підтвердити відновлення картки пацієнта?");
@@ -168,8 +180,15 @@ export default function PetCardsAdmin({appointmentOnClick, petCardOnClick}) {
     };
 
     const deleteCard = async (id) => {
+        const petAppointments = appointments.filter(a => a.petId === id || a.petId?._id === id);
+        if (petAppointments.length > 0) {
+            alert('Неможливо видалити пацієнта, оскільки існують пов’язані записи або прийоми.');
+            return;
+        }
+
         const confirmed = window.confirm("Підтвердити видалення картки пацієнта?");
         if (!confirmed) return;
+
         await fetch(`/api/petcards/${id}`, {
             method: 'DELETE',
             headers: {
@@ -179,6 +198,7 @@ export default function PetCardsAdmin({appointmentOnClick, petCardOnClick}) {
         setSelectedCard(null);
         fetchCards();
     };
+
 
 
     const handleSelect = (card) => {
@@ -238,13 +258,24 @@ export default function PetCardsAdmin({appointmentOnClick, petCardOnClick}) {
     };
 
     const archiveAppointment = async (id) => {
+        const appt = appointments.find(a => a._id === id);
+        const isCancelled = appt?.status === 'cancelled';
+        const isOlderThan30Days = new Date() - new Date(appt.date) > 30 * 24 * 60 * 60 * 1000;
+
+        if (!isCancelled || !isOlderThan30Days) {
+            alert('Можна архівувати лише скасовані прийоми, яким більше 30 днів.');
+            return;
+        }
+
         if (!window.confirm("Архівувати прийом?")) return;
+
         await fetch(`/api/appointments/${id}/archive`, {
             method: 'PATCH',
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         });
         fetchAppointments();
     };
+
 
     const restoreAppointment = async (id) => {
         if (!window.confirm("Відновити прийом?")) return;
@@ -256,13 +287,24 @@ export default function PetCardsAdmin({appointmentOnClick, petCardOnClick}) {
     };
 
     const deleteAppointment = async (id) => {
+        const appt = appointments.find(a => a._id === id);
+        const isCancelled = appt?.status === 'cancelled';
+        const isOlderThan30Days = new Date() - new Date(appt.date) > 30 * 24 * 60 * 60 * 1000;
+
+        if (!isCancelled || !isOlderThan30Days) {
+            alert('Видалити можна лише скасовані прийоми, яким більше 30 днів.');
+            return;
+        }
+
         if (!window.confirm("Видалити прийом?")) return;
+
         await fetch(`/api/appointments/${id}`, {
             method: 'DELETE',
-            headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         });
         fetchAppointments();
     };
+
     const saveAppointmentChanges = async (id) => {
         const res = await fetch(`/api/appointments/${id}`, {
             method: 'PATCH',

@@ -3,6 +3,8 @@ const Category = require('../models/Category');
 const Species = require('../models/Species');
 const Order = require('../models/Order');
 const Recipe = require('../models/Recipe');
+const sendOrderEmail = require('../utils/sendOrderEmail');
+
 
 
 exports.getProducts = async (req, res) => {
@@ -56,8 +58,6 @@ exports.createOrder = async (req, res) => {
         if (!userId || !items?.length || !delivery || !paymentMethod) {
             return res.status(400).json({ error: 'Некоректні дані замовлення' });
         }
-
-        // Перевірка доставки
         switch (delivery.method) {
             case 'np_branch':
                 if (!delivery.city || !delivery.branch) {
@@ -80,7 +80,6 @@ exports.createOrder = async (req, res) => {
                 return res.status(400).json({ error: 'Невідомий метод доставки' });
         }
 
-        // Валідація оплати
         const validMethods = {
             pickup: ['cash', 'card'],
             np_courier: ['cash', 'card'],
@@ -90,8 +89,6 @@ exports.createOrder = async (req, res) => {
         if (!validMethods[delivery.method]?.includes(paymentMethod)) {
             return res.status(400).json({ error: 'Недопустимий спосіб оплати для цього типу доставки' });
         }
-
-        // Перевірка залишків і підрахунок суми
         let total = 0;
         for (const item of items) {
             const product = await Product.findById(item.productId);
@@ -109,8 +106,6 @@ exports.createOrder = async (req, res) => {
                 $inc: { stock: -item.quantity }
             });
         }
-
-        // 🔄 Зменшення кількості в рецептах
         if (recipes && typeof recipes === 'object') {
             for (const [productId, recipeId] of Object.entries(recipes)) {
                 const recipe = await Recipe.findById(recipeId);
@@ -145,6 +140,7 @@ exports.createOrder = async (req, res) => {
             status: 'pending',
             createdAt: new Date()
         });
+        await sendOrderEmail({ order, type: 'created' });
 
         res.status(201).json({ message: 'Замовлення створено', orderId: order._id });
     } catch (e) {

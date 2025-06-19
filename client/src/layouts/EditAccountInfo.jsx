@@ -125,7 +125,7 @@ export default function EditAccountInfo({ email, phone, handleEditAccountInfo, o
                             setShowConfirmCode(false);
                             setCode('');
                         }}
-                        content={"Відмінити"}
+                        content={"Скасувати"}
                     />
                 </>
             )}

@@ -9,6 +9,7 @@ router.post('/', auth, appointmentController.createAppointment);
 
 router.get('/admin', auth, adminOrDoctor, appointmentController.getAllAdmin);
 router.post('/admin', auth, adminOrDoctor, appointmentController.createByAdmin);
+router.get('/with-procedure/:procedureId', auth, adminOrDoctor, appointmentController.getByProcedure)
 router.patch('/:id/archive', auth, adminOrDoctor, appointmentController.archive);
 router.get('/by-pet/:petId', auth, adminOrDoctor, appointmentController.getByPet);
 router.patch('/:id/restore', auth, adminOrDoctor, appointmentController.restore);

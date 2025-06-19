@@ -41,11 +41,24 @@ export default function Procedure() {
         });
     };
 
-    const archiveProcedure = (id) => {
-        fetch(`/api/procedures/${id}/archive`, {
+    const archiveProcedure = async (id) => {
+        const res = await fetch(`/api/appointments/with-procedure/${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const related = await res.json();
+        if (related.length > 0) {
+            alert('Неможливо архівувати процедуру, на яку записані пацієнти.');
+            return;
+        }
+
+        const confirmed = window.confirm("Ви впевнені, що хочете архівувати цю процедуру?");
+        if (!confirmed) return;
+
+        await fetch(`/api/procedures/${id}/archive`, {
             method: 'POST',
-            headers: {Authorization: `Bearer ${token}`}
-        }).then(fetchList);
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        fetchList();
     };
 
     const restoreProcedure = (id) => {
@@ -57,12 +70,26 @@ export default function Procedure() {
         }).then(fetchList);
     };
 
-    const deleteProcedure = (id) => {
-        fetch(`/api/procedures/${id}`, {
+    const deleteProcedure = async (id) => {
+        const res = await fetch(`/api/appointments/with-procedure/${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const related = await res.json();
+        if (related.length > 0) {
+            alert('Неможливо видалити процедуру, на яку записані пацієнти.');
+            return;
+        }
+
+        const confirmed = window.confirm("Ця дія незворотна. Ви впевнені, що хочете видалити процедуру?");
+        if (!confirmed) return;
+
+        await fetch(`/api/procedures/${id}`, {
             method: 'DELETE',
-            headers: {Authorization: `Bearer ${token}`}
-        }).then(fetchList);
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        fetchList();
     };
+
     return (
         <div className="procedures-container">
 
@@ -81,7 +108,7 @@ export default function Procedure() {
                                     <li key={p._id}>
                                         {p.name} — {p.price}₴ — {p.duration} хв
                                         — {p.species.length ? p.species.map(s => s.name).join(', ') : 'Універсальна'}
-                                        {!p.isArchived && (
+                                        {!p.archived && (
                                             <div className={"procedures-button-container"}>
                                                 <Button className={"procedures-button procedures__edit-button"}
                                                         onClick={() => setEditing(p)} content={"Редагувати"}></Button>
@@ -90,7 +117,7 @@ export default function Procedure() {
                                                         content={"В архів"}></Button>
                                             </div>
                                         )}
-                                        {p.isArchived && (
+                                        {p.archived && (
                                             <div className={"procedures-button-container"}>
                                                 <Button className={"procedures-button procedures__restore-button"}
                                                         onClick={() => restoreProcedure(p._id)}

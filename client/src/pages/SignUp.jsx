@@ -99,7 +99,7 @@ export default function SignUp() {
                             type="text"
                             onChange={e => setCode(e.target.value)}
                         />
-                        <Button className="sign-up__button" content={"Sign up"} onClick={handleSignUp} />
+                        <Button className="sign-up__button" content={"Зареєструватись"} onClick={handleSignUp} />
                     </>
                 )}
 

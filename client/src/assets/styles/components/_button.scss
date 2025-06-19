@@ -161,7 +161,9 @@ $primary-dark-red: rgba(153, 0, 0, 0.63);
   transition: background 0.3s ease;
   width: max-content;
 }
-
+.pharmacy-admin__button{
+  padding: 5px 10px;
+}
 .procedures-container__button:hover,
 .procedure-item__button:hover,
 .procedures-button:hover,
