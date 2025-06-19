@@ -159,6 +159,14 @@ export default function SideBar({onCLick, isOpen, className}) {
                     </>
                 )
             }
+            <div className={"side-bar__contacts"}>
+                Контакти:
+                <br/>
+                <br/>
+                pethealthmailer@gmail.com
+                <br/>
+                з 8:00 по 20:00 (ВТ-НД)
+            </div>
 
 
         </div>

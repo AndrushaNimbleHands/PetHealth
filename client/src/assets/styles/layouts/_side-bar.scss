@@ -72,4 +72,14 @@ $primary-dark-gray-transparent: rgba(51, 51, 51, 0.59);
   margin: 0;
   width: 200px;
 }
+.side-bar__contacts{
+  margin-top: auto;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  align-self: flex-start;
+  justify-self: flex-end;
+}
 

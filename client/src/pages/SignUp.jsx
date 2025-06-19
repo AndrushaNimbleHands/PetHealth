@@ -4,6 +4,7 @@ import Field from "../components/Field";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { sendCode, signUp } from "../services/authService";
+import FieldPhone from "../components/FieldPhone";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -99,10 +100,8 @@ export default function SignUp() {
             <div className="sign-up__info-container">
                 <div className="sign-up__title">Реєстрація</div>
 
-                <Field
+                <FieldPhone
                     title="Номер телефону:"
-                    type="tel"
-                    placeholder="+380XXXXXXXXX"
                     onChange={e => setPhone(e.target.value)}
                 />
 
