@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../assets/styles/main.scss';
 import Button from "../components/Button";
 import Field from "../components/Field";
+import FieldPhone from "../components/FieldPhone";
 
 export default function EditAccountInfo({ email, phone, handleEditAccountInfo, onChangeEmail, isAdmin }) {
     const [phoneToConfirm, setPhoneToConfirm] = useState('');
@@ -79,7 +80,7 @@ export default function EditAccountInfo({ email, phone, handleEditAccountInfo, o
             )}
 
             {!showConfirmCode && (
-                <Field
+                <FieldPhone
                     className={"edit-account-info__phone"}
                     classNameTitle={"edit-info-title"}
                     title={"Номер телефону"}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../assets/styles/main.scss';
 import Field from "../components/Field";
 import Button from "../components/Button";
@@ -13,8 +13,28 @@ export default function SignUp() {
     const [sent, setSent] = useState(false);
     const [error, setError] = useState('');
     const [cooldown, setCooldown] = useState(0);
+    const [sendCount, setSendCount] = useState(() => parseInt(localStorage.getItem("signUpSendCount")) || 0);
+    const [blockUntil, setBlockUntil] = useState(() => parseInt(localStorage.getItem("signUpBlockUntil")) || 0);
+
+    useEffect(() => {
+        const now = Date.now();
+        if (blockUntil && now >= blockUntil) {
+            localStorage.removeItem("signUpSendCount");
+            localStorage.removeItem("signUpBlockUntil");
+            setSendCount(0);
+            setBlockUntil(0);
+        }
+    }, [blockUntil]);
 
     const handleSend = async () => {
+        const now = Date.now();
+
+        if (blockUntil && now < blockUntil) {
+            const remaining = Math.ceil((blockUntil - now) / 1000 / 60);
+            setError(`Перевищено кількість спроб. Спробуйте знову через ${remaining} хв.`);
+            return;
+        }
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const phoneRegex = /^\+380\d{9}$/;
 
@@ -31,7 +51,7 @@ export default function SignUp() {
             await sendCode(email);
             setSent(true);
             setError("");
-            setCooldown(60); // 1:00
+            setCooldown(60);
 
             const interval = setInterval(() => {
                 setCooldown(prev => {
@@ -43,6 +63,15 @@ export default function SignUp() {
                 });
             }, 1000);
 
+            const newCount = sendCount + 1;
+            setSendCount(newCount);
+            localStorage.setItem("signUpSendCount", newCount);
+
+            if (newCount >= 5) {
+                const blockUntilTime = now + 5 * 60 * 60 * 1000; // 5 годин
+                setBlockUntil(blockUntilTime);
+                localStorage.setItem("signUpBlockUntil", blockUntilTime);
+            }
         } catch (e) {
             setError(e.message || 'Не вдалося надіслати код');
         }
@@ -63,7 +92,7 @@ export default function SignUp() {
         catch (e) {
             setError(e.message || 'Помилка при реєстрації');
         }
-    }
+    };
 
     return (
         <div className="sign-up__container">
@@ -71,14 +100,16 @@ export default function SignUp() {
                 <div className="sign-up__title">Реєстрація</div>
 
                 <Field
-                    title="Номер телефону:" type="tel"
+                    title="Номер телефону:"
+                    type="tel"
                     placeholder="+380XXXXXXXXX"
                     onChange={e => setPhone(e.target.value)}
                 />
 
                 <div className="sign-up__send-code-container">
                     <Field
-                        title="Email:" type="email"
+                        title="Email:"
+                        type="email"
                         placeholder="name@gmail.com"
                         onChange={e => setEmail(e.target.value)}
                     />
